@@ -43,6 +43,14 @@ const Navbar = () => {
             </div>
             <div>
               <NavLink
+                to="/posts"
+                className={({ isActive }) => (isActive ? "font-bold" : "")}
+              >
+                Posts
+              </NavLink>
+            </div>
+            <div>
+              <NavLink
                 to="/post"
                 className={({ isActive }) => (isActive ? "font-bold" : "")}
               >
