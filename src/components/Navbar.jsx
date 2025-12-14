@@ -43,7 +43,7 @@ const Navbar = () => {
             </div>
             <div>
               <NavLink
-                to="/about"
+                to="/post"
                 className={({ isActive }) => (isActive ? "font-bold" : "")}
               >
                 Write post
