@@ -7,6 +7,7 @@ import HomePage from "./pages/HomePage.jsx";
 import AboutPage from "./pages/AboutPage.jsx";
 import LoginPage from "./pages/LoginPage.jsx";
 import SignUpPage from "./pages/SignUpPage.jsx";
+import PostsPage from "./pages/PostsPage.jsx";
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
@@ -15,6 +16,7 @@ createRoot(document.getElementById("root")).render(
         <Route element={<BlogLayout />}>
           <Route index element={<HomePage />} />
           <Route path="about" element={<AboutPage />} />
+          <Route path="posts" element={<PostsPage />} />
           <Route path="login" element={<LoginPage />} />
           <Route path="register" element={<SignUpPage />} />
         </Route>
