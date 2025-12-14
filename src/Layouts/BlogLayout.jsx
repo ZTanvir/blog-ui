@@ -4,7 +4,7 @@ import Footer from "../components/Footer";
 const BlogLayout = () => {
   return (
     <div className="flex min-h-screen flex-col">
-      <header>
+      <header className="sticky top-0">
         <Navbar />
       </header>
       <main className="flex-1">
