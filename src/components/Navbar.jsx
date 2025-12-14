@@ -25,54 +25,42 @@ const Navbar = () => {
             </NavLink>
           </div>
           <div className="hidden gap-8 sm:flex">
-            <div>
-              <NavLink
-                to="/"
-                className={({ isActive }) => (isActive ? "font-bold" : "")}
-              >
-                Homepage
-              </NavLink>
-            </div>
-            <div>
-              <NavLink
-                to="/about"
-                className={({ isActive }) => (isActive ? "font-bold" : "")}
-              >
-                About me
-              </NavLink>
-            </div>
-            <div>
-              <NavLink
-                to="/posts"
-                className={({ isActive }) => (isActive ? "font-bold" : "")}
-              >
-                Posts
-              </NavLink>
-            </div>
-            <div>
-              <NavLink
-                to="/post"
-                className={({ isActive }) => (isActive ? "font-bold" : "")}
-              >
-                Write post
-              </NavLink>
-            </div>
-            <div>
-              <NavLink
-                to="/login"
-                className={({ isActive }) => (isActive ? "font-bold" : "")}
-              >
-                Login
-              </NavLink>
-            </div>
-            <div>
-              <NavLink
-                to="/register"
-                className={({ isActive }) => (isActive ? "font-bold" : "")}
-              >
-                Sign up
-              </NavLink>
-            </div>
+            <NavLink
+              to="/"
+              className={({ isActive }) => (isActive ? "font-bold" : "")}
+            >
+              Homepage
+            </NavLink>
+            <NavLink
+              to="/about"
+              className={({ isActive }) => (isActive ? "font-bold" : "")}
+            >
+              About me
+            </NavLink>
+            <NavLink
+              to="/posts"
+              className={({ isActive }) => (isActive ? "font-bold" : "")}
+            >
+              Posts
+            </NavLink>
+            <NavLink
+              to="/post"
+              className={({ isActive }) => (isActive ? "font-bold" : "")}
+            >
+              Write post
+            </NavLink>
+            <NavLink
+              to="/login"
+              className={({ isActive }) => (isActive ? "font-bold" : "")}
+            >
+              Login
+            </NavLink>
+            <NavLink
+              to="/register"
+              className={({ isActive }) => (isActive ? "font-bold" : "")}
+            >
+              Sign up
+            </NavLink>
           </div>
           <div
             onClick={() => setIsMobile(!isMobile)}
@@ -85,11 +73,42 @@ const Navbar = () => {
       <div className="flex flex-col gap-6 sm:hidden">
         {isMobile && (
           <>
-            <div>Homepage</div>
-            <div>About me</div>
-            <div>Write post</div>
-            <div>Login</div>
-            <div>Sign up</div>
+            <NavLink
+              to="/"
+              className={({ isActive }) => (isActive ? "font-bold" : "")}
+            >
+              Homepage
+            </NavLink>
+            <NavLink
+              to="/about"
+              className={({ isActive }) => (isActive ? "font-bold" : "")}
+            >
+              About me
+            </NavLink>
+            <NavLink
+              to="/posts"
+              className={({ isActive }) => (isActive ? "font-bold" : "")}
+            >
+              Posts
+            </NavLink>
+            <NavLink
+              to="/post"
+              className={({ isActive }) => (isActive ? "font-bold" : "")}
+            >
+              Write post
+            </NavLink>
+            <NavLink
+              to="/login"
+              className={({ isActive }) => (isActive ? "font-bold" : "")}
+            >
+              Login
+            </NavLink>
+            <NavLink
+              to="/register"
+              className={({ isActive }) => (isActive ? "font-bold" : "")}
+            >
+              Sign up
+            </NavLink>
           </>
         )}
       </div>
