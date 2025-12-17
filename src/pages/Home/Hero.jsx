@@ -15,7 +15,7 @@ const Hero = () => {
             Feel free to read all about my insights, experiences, tips and
             reflections!
           </p>
-          <div className="flex items-center justify-center gap-6">
+          <div className="flex flex-wrap items-center justify-center gap-6">
             <Link
               className="rounded-lg border px-8 py-3 text-lg text-white duration-200 hover:bg-white hover:text-gray-700"
               to="/login"
