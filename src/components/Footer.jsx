@@ -4,7 +4,9 @@ import { Link } from "react-router";
 const Footer = () => {
   return (
     <div className="flex items-center justify-center gap-1 px-4 py-2">
-      <p className="underline">Made by Zahirul Islam Tanvir</p>
+      <p className="text-gray-300 hover:cursor-pointer hover:underline">
+        Made by Zahirul Islam Tanvir
+      </p>
       <div>
         <Link to="https://github.com/ZTanvir">
           <FaGithub size={25} />
