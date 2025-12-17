@@ -8,6 +8,7 @@ import AboutPage from "./pages/About/AboutPage.jsx";
 import LoginPage from "./pages/Login/LoginPage.jsx";
 import SignUpPage from "./pages/Register/SignUpPage.jsx";
 import PostsPage from "./pages/Posts/PostsPage.jsx";
+import WritePostPage from "./pages/WritePosts/WritePostPage.jsx";
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
@@ -17,6 +18,7 @@ createRoot(document.getElementById("root")).render(
           <Route index element={<HomePage />} />
           <Route path="about" element={<AboutPage />} />
           <Route path="posts" element={<PostsPage />} />
+          <Route path="write" element={<WritePostPage />} />
           <Route path="login" element={<LoginPage />} />
           <Route path="register" element={<SignUpPage />} />
         </Route>

@@ -50,7 +50,7 @@ const Navbar = () => {
               Posts
             </NavLink>
             <NavLink
-              to="/post"
+              to="/write"
               className={({ isActive }) =>
                 isActive ? "text-sky-400" : "text-gray-300"
               }
@@ -110,7 +110,7 @@ const Navbar = () => {
               Posts
             </NavLink>
             <NavLink
-              to="/post"
+              to="/write"
               className={({ isActive }) =>
                 isActive ? "text-sky-400" : "text-gray-300"
               }
