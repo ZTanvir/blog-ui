@@ -8,7 +8,7 @@ const Navbar = () => {
   return (
     <nav className="px-4 py-4">
       <div>
-        <div className="mb-6 flex items-center text-lg sm:mb-0">
+        <div className="flex items-center text-lg">
           <div className="mr-auto flex text-4xl">
             <NavLink
               to="/"
@@ -78,46 +78,58 @@ const Navbar = () => {
             onClick={() => setIsMobile(!isMobile)}
             className="hover:cursor-pointer sm:hidden"
           >
-            <RxHamburgerMenu size={30} />
+            <RxHamburgerMenu size={30} color="white" />
           </div>
         </div>
       </div>
-      <div className="flex flex-col gap-6 sm:hidden">
+      <div className="flex flex-col gap-6">
         {isMobile && (
           <>
             <NavLink
               to="/"
-              className={({ isActive }) => (isActive ? "font-bold" : "")}
+              className={({ isActive }) =>
+                isActive ? "mt-6 text-sky-400" : "mt-6 text-gray-300"
+              }
             >
               Homepage
             </NavLink>
             <NavLink
               to="/about"
-              className={({ isActive }) => (isActive ? "font-bold" : "")}
+              className={({ isActive }) =>
+                isActive ? "text-sky-400" : "text-gray-300"
+              }
             >
               About me
             </NavLink>
             <NavLink
               to="/posts"
-              className={({ isActive }) => (isActive ? "font-bold" : "")}
+              className={({ isActive }) =>
+                isActive ? "text-sky-400" : "text-gray-300"
+              }
             >
               Posts
             </NavLink>
             <NavLink
               to="/post"
-              className={({ isActive }) => (isActive ? "font-bold" : "")}
+              className={({ isActive }) =>
+                isActive ? "text-sky-400" : "text-gray-300"
+              }
             >
               Write post
             </NavLink>
             <NavLink
               to="/login"
-              className={({ isActive }) => (isActive ? "font-bold" : "")}
+              className={({ isActive }) =>
+                isActive ? "text-sky-400" : "text-gray-300"
+              }
             >
               Login
             </NavLink>
             <NavLink
               to="/register"
-              className={({ isActive }) => (isActive ? "font-bold" : "")}
+              className={({ isActive }) =>
+                isActive ? "text-sky-400" : "text-gray-300"
+              }
             >
               Sign up
             </NavLink>
