@@ -2,7 +2,7 @@ const Technologies = () => {
   return (
     <section className="rounded-lg px-4 py-8 shadow-lg">
       <h2 className="text-xl font-bold">Technologies Used</h2>
-      <div className="mt-3 grid grid-cols-3">
+      <div className="mt-3 grid gap-4 sm:grid-cols-3">
         <section>
           <h3 className="font-lg font-semibold">Frontend</h3>
           <div className="mt-2 space-y-1 text-sm">
