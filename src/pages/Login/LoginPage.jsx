@@ -11,7 +11,7 @@ const LoginPage = () => {
           <label htmlFor="email">Email</label>
           <input
             className="rounded border border-gray-300 bg-gray-50 px-2 py-1 outline-sky-300"
-            type="text"
+            type="email"
             name="email"
             id="email"
             placeholder="example@gmail.com"
@@ -22,7 +22,7 @@ const LoginPage = () => {
           <label htmlFor="password">Password</label>
           <input
             className="rounded border border-gray-300 bg-gray-50 px-2 py-1 outline-sky-300"
-            type="text"
+            type="password"
             name="password"
             id="password"
             placeholder="password"
