@@ -87,6 +87,7 @@ const Navbar = () => {
           <>
             <NavLink
               to="/"
+              onClick={() => setIsMobile(false)}
               className={({ isActive }) =>
                 isActive ? "mt-6 text-sky-400" : "mt-6 text-gray-300"
               }
@@ -95,6 +96,7 @@ const Navbar = () => {
             </NavLink>
             <NavLink
               to="/about"
+              onClick={() => setIsMobile(false)}
               className={({ isActive }) =>
                 isActive ? "text-sky-400" : "text-gray-300"
               }
@@ -103,6 +105,7 @@ const Navbar = () => {
             </NavLink>
             <NavLink
               to="/posts"
+              onClick={() => setIsMobile(false)}
               className={({ isActive }) =>
                 isActive ? "text-sky-400" : "text-gray-300"
               }
@@ -111,6 +114,7 @@ const Navbar = () => {
             </NavLink>
             <NavLink
               to="/write"
+              onClick={() => setIsMobile(false)}
               className={({ isActive }) =>
                 isActive ? "text-sky-400" : "text-gray-300"
               }
@@ -119,6 +123,7 @@ const Navbar = () => {
             </NavLink>
             <NavLink
               to="/login"
+              onClick={() => setIsMobile(false)}
               className={({ isActive }) =>
                 isActive ? "text-sky-400" : "text-gray-300"
               }
@@ -127,6 +132,7 @@ const Navbar = () => {
             </NavLink>
             <NavLink
               to="/register"
+              onClick={() => setIsMobile(false)}
               className={({ isActive }) =>
                 isActive ? "text-sky-400" : "text-gray-300"
               }
