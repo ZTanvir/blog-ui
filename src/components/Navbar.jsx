@@ -39,7 +39,7 @@ const Navbar = () => {
                 isActive ? "text-sky-400" : "text-gray-300"
               }
             >
-              About me
+              About
             </NavLink>
             <NavLink
               to="/posts"
@@ -99,7 +99,7 @@ const Navbar = () => {
                 isActive ? "text-sky-400" : "text-gray-300"
               }
             >
-              About me
+              About
             </NavLink>
             <NavLink
               to="/posts"
