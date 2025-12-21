@@ -1,5 +1,38 @@
 import Hero from "./Hero";
 import { Link } from "react-router";
+import PostCardsList from "../../components/PostCardsList";
+const posts = [
+  {
+    id: 17,
+    title: "post by user xyz",
+    excerpt: "Wed, 21 Oct 2015 18:27:50 GMT",
+    content: "Content",
+    tag: ["nodejs", "python"],
+    createdAt: "2025-11-25T11:48:19.242Z",
+    updatedAt: "2025-11-25T11:48:19.242Z",
+    published: false,
+    userId: 5,
+    user: {
+      username: "xyz",
+      role: "USER",
+    },
+  },
+  {
+    id: 18,
+    title: "post by user xyz",
+    excerpt: "Wed, 21 Oct 2015 18:27:50 GMT",
+    content: "Content",
+    tag: ["nodejs", "python"],
+    createdAt: "2025-12-21T09:36:10.051Z",
+    updatedAt: "2025-12-21T09:36:10.051Z",
+    published: false,
+    userId: 5,
+    user: {
+      username: "xyz",
+      role: "USER",
+    },
+  },
+];
 
 const HomePage = () => {
   return (
@@ -28,6 +61,9 @@ const HomePage = () => {
           >
             Learn More
           </Link>
+        </div>
+        <div>
+          <PostCardsList posts={posts} />
         </div>
       </div>
     </>
