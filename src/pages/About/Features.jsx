@@ -16,10 +16,10 @@ const BlogFeatures = [
 ];
 const Features = () => {
   return (
-    <section className="rounded-lg px-4 py-8 shadow-lg">
+    <section className="space-y-4 rounded-lg px-4 py-8 shadow-sm">
       <h2 className="text-xl font-bold">Feature</h2>
       {BlogFeatures.map((feature, index) => (
-        <div key={index} className="mt-4 flex items-center gap-1">
+        <div key={index} className="flex items-center gap-1">
           <IoIosCheckmarkCircle
             size={19}
             color="#0284c7"

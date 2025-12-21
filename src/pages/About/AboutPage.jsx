@@ -7,9 +7,11 @@ const AboutPage = () => {
     <div className="space-y-6">
       <h1 className="text-center text-4xl font-bold">About Our Blog</h1>
       <div className="mt-4 mr-auto ml-auto h-1 w-20 bg-sky-500 sm:w-25"></div>
-      <Mission />
-      <Features />
-      <Technologies />
+      <div className="space-y-6">
+        <Mission />
+        <Features />
+        <Technologies />
+      </div>
     </div>
   );
 };
