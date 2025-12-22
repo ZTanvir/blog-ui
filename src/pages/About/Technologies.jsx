@@ -1,6 +1,6 @@
 const Technologies = () => {
   return (
-    <section className="mb-6 rounded-lg px-4 py-8 shadow-sm">
+    <section className="mb-6 rounded-lg border border-gray-300/50 bg-neutral-100/20 px-4 py-8 shadow-sm">
       <h2 className="text-xl font-bold">Technologies Used</h2>
       <div className="mt-3 grid gap-4 sm:grid-cols-3">
         <section>

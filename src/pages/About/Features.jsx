@@ -16,7 +16,7 @@ const BlogFeatures = [
 ];
 const Features = () => {
   return (
-    <section className="space-y-4 rounded-lg px-4 py-8 shadow-sm">
+    <section className="space-y-4 rounded-lg border border-gray-300/50 bg-neutral-100/20 px-4 py-8 shadow-sm">
       <h2 className="text-xl font-bold">Feature</h2>
       {BlogFeatures.map((feature, index) => (
         <div key={index} className="flex items-center gap-1">

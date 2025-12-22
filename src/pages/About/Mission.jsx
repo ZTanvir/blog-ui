@@ -1,6 +1,6 @@
 const Mission = () => {
   return (
-    <section className="space-y-3 rounded-lg px-4 py-8 shadow-sm">
+    <section className="space-y-3 rounded-lg border border-gray-300/50 bg-neutral-100/20 px-4 py-8 shadow-sm">
       <h2 className="text-xl font-bold">Our Missing</h2>
       <p>
         Welcome to our blog platform! Our mission is to create a space where
