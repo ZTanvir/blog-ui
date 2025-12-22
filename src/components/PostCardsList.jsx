@@ -1,7 +1,7 @@
 import PostCard from "./PostCard";
 const PostCardsList = ({ posts }) => {
   return (
-    <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-3">
+    <div className="grid grid-cols-[repeat(auto-fill,minmax(min(100%,425px),1fr))] gap-10 p-4">
       {posts && posts.map((post) => <PostCard key={post.id} postData={post} />)}
     </div>
   );
