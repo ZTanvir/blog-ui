@@ -6,12 +6,22 @@ const PostCard = ({ postData }) => {
     Date.parse(`${postData.createdAt}`) &&
     new Date(`${postData.createdAt}`).toDateString();
   return (
-    <section className="space-y-3 rounded-lg border border-gray-300/50 bg-neutral-100/20 px-5 py-6 shadow-sm">
+    <section className="space-y-3 rounded-lg border border-gray-300/50 bg-neutral-100/20 px-5 py-6 shadow-sm duration-300 hover:shadow-lg">
       <h2 className="text-xl font-bold text-sky-500">{postData.title}</h2>
       <p className="text-gray-600">{postData.excerpt}</p>
       <div className="flex justify-between text-sm font-light text-gray-500">
         <span>{postData?.user.username}</span>
         <span>{postDate}</span>
+      </div>
+      <div className="flex gap-2">
+        {postData?.tag.map((tag, index) => (
+          <span
+            className="inline-block rounded-md bg-gray-500 px-2 py-1 text-white"
+            key={index}
+          >
+            {tag}
+          </span>
+        ))}
       </div>
 
       <hr className="my-4 text-gray-200" />
