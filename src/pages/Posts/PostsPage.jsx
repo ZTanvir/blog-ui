@@ -7,6 +7,7 @@ const PostsPage = () => {
   const { data, error, isLoading } = useSWR("api/posts", postService.getPosts);
   const [searchPost, setSearchPost] = useState("");
 
+  // filter post based on user search input
   const posts =
     data &&
     data.filter((post) =>
@@ -26,6 +27,7 @@ const PostsPage = () => {
         />
       </div>
     );
+
   return (
     <div>
       <h1 className="text-center text-4xl font-bold text-gray-700">
