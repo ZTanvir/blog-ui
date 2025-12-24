@@ -9,4 +9,16 @@ const getPosts = async () => {
     throw error;
   }
 };
-export default { getPosts };
+
+const getLatestPosts = async (limit, order) => {
+  try {
+    const response = await axiosApi.get(
+      `api/posts?sort=date&limit=${limit}&order=${order}`,
+    );
+    return response.data;
+  } catch (error) {
+    console.error(error);
+    throw error;
+  }
+};
+export default { getPosts, getLatestPosts };

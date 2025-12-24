@@ -14,6 +14,7 @@ const HomePage = () => {
           Join our community of writers and share your knowledge, ideas, and
           stories with readers around the world.
         </p>
+
         <div className="flex flex-wrap items-center justify-center gap-6">
           <Link
             className="rounded-lg bg-sky-600 px-8 py-3 text-lg text-white duration-200 hover:bg-sky-900"
