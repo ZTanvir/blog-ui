@@ -10,7 +10,7 @@ const LoginPage = () => {
         <div className="flex flex-col gap-2">
           <label htmlFor="email">Email</label>
           <input
-            className="rounded border border-gray-300 bg-gray-50 px-2 py-1 outline-sky-300"
+            className="rounded border border-gray-300 bg-gray-50 p-2 outline-sky-300"
             type="email"
             name="email"
             id="email"
@@ -21,7 +21,7 @@ const LoginPage = () => {
         <div className="flex flex-col gap-2">
           <label htmlFor="password">Password</label>
           <input
-            className="rounded border border-gray-300 bg-gray-50 px-2 py-1 outline-sky-300"
+            className="rounded border border-gray-300 bg-gray-50 p-2 outline-sky-300"
             type="password"
             name="password"
             id="password"

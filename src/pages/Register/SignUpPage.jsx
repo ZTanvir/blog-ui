@@ -10,7 +10,7 @@ const SignUpPage = () => {
         <div className="flex flex-col gap-2">
           <label htmlFor="username">Username</label>
           <input
-            className="rounded border border-gray-300 bg-gray-50 px-2 py-1 outline-sky-300"
+            className="rounded border border-gray-300 bg-gray-50 p-2 outline-sky-300"
             type="text"
             name="username"
             id="username"
