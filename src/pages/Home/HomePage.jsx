@@ -1,10 +1,13 @@
-import Hero from "./Hero";
 import { Link } from "react-router";
+import Hero from "./Hero";
+import LatestPosts from "../../components/LatestPosts";
 
 const HomePage = () => {
   return (
     <>
       <Hero />
+
+      <LatestPosts limit={6} order={"desc"} />
 
       <div className="bg-gray-100 px-4 py-8">
         <h2 className="mb-4 text-center text-4xl font-bold tracking-wide text-gray-900">

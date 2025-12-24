@@ -14,7 +14,7 @@ const LatestPosts = ({ limit, order }) => {
   }
   if (isLoading)
     return (
-      <div className="flex h-full flex-col items-center justify-center gap-2">
+      <div className="flex h-[400px] flex-col items-center justify-center gap-2">
         <Spinner
           isVisible={true}
           width={80}
