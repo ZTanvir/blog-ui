@@ -2,8 +2,8 @@ import { useState } from "react";
 import { Link } from "react-router";
 import { useNavigate } from "react-router";
 import useSWRMutation from "swr/mutation";
-import postService from "../../services/postService";
-
+import authServices from "../../services/authServices";
+import helperFunction from "../../utils/helperFunction";
 
 const SignUpPage = () => {
   const [username, setUsername] = useState("");
@@ -12,7 +12,7 @@ const SignUpPage = () => {
   const [confirmPassword, setConfirmPassword] = useState("");
   const { trigger, isMutating, error } = useSWRMutation(
     "api/auth/register",
-    postService.sendFormData,
+    authServices.registerUser,
   );
   const navigate = useNavigate()
 
@@ -27,9 +27,9 @@ const SignUpPage = () => {
     try {
       await trigger(formData);
       // user register successfully
-      setTimeout(()=>{
+      setTimeout(() => {
         navigate("/login")
-      },2000); 
+      }, 2000);
     } catch (error) {
       console.error(error?.response?.data?.errors);
     }
@@ -37,21 +37,12 @@ const SignUpPage = () => {
 
   const allErrors = error?.response?.data?.errors;
 
-  // filter error msg from failed register api response
-  const filterFormErrorMsg = (errorList = [], searchItem) => {
-    const errorMsg = errorList.find((item) => item.path === searchItem);
-    if (errorMsg) {
-      return errorMsg.msg;
-    } else {
-      return null;
-    }
-  };
 
   return (
     <div>
       <h3 className="text-center text-2xl font-bold">Create an account</h3>
       <p className="mt-4 text-center">Join our community and start sharing</p>
-   
+
       <form
         onSubmit={handleSignupSubmit}
         className="flex flex-col gap-4 rounded p-4 shadow-md"
@@ -70,7 +61,7 @@ const SignUpPage = () => {
             onChange={(e) => setUsername(e.target.value)}
           />
           <p className="text-sm text-red-400">
-            {allErrors && filterFormErrorMsg(allErrors, "username")}
+            {allErrors && helperFunction.filterFormErrorMsg(allErrors, "username")}
           </p>
         </div>
 
@@ -88,7 +79,7 @@ const SignUpPage = () => {
             onChange={(e) => setEmail(e.target.value)}
           />
           <p className="text-sm text-red-400">
-            {allErrors && filterFormErrorMsg(allErrors, "email")}
+            {allErrors && helperFunction.filterFormErrorMsg(allErrors, "email")}
           </p>
         </div>
 
@@ -106,7 +97,7 @@ const SignUpPage = () => {
             onChange={(e) => setPassword(e.target.value)}
           />
           <p className="text-sm text-red-400">
-            {allErrors && filterFormErrorMsg(allErrors, "password")}
+            {allErrors && helperFunction.filterFormErrorMsg(allErrors, "password")}
           </p>
 
           {!allErrors && (
@@ -134,7 +125,7 @@ const SignUpPage = () => {
             onChange={(e) => setConfirmPassword(e.target.value)}
           />
           <p className="text-sm text-red-400">
-            {allErrors && filterFormErrorMsg(allErrors, "confirmPassword")}
+            {allErrors && helperFunction.filterFormErrorMsg(allErrors, "confirmPassword")}
           </p>
         </div>
 

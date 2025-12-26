@@ -22,9 +22,5 @@ const getLatestPosts = async (limit, order) => {
   }
 };
 
-const sendFormData = async (url, { arg }) => {
-  const response = await axiosApi.post(url, arg);
-  return response.data;
-};
 
-export default { getPosts, getLatestPosts, sendFormData };
+export default { getPosts, getLatestPosts };
