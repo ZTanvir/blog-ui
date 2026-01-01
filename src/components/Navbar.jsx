@@ -2,9 +2,26 @@ import { useState } from "react";
 import { NavLink } from "react-router";
 import { RxHamburgerMenu } from "react-icons/rx";
 import blogLogo from "../assets/images/blogging.png";
+import { UseUser } from "../context/UserContext";
+import authServices from "../services/authServices";
+import { useNavigate } from "react-router";
 
 const Navbar = () => {
   const [isMobile, setIsMobile] = useState(false);
+  const navigate = useNavigate();
+  const { user, setUser, setToken } = UseUser();
+  const userName = user && user.username;
+
+  const handleSubmitLogout = async (e) => {
+    e.preventDefault();
+    const response = await authServices.logoutUser();
+    if (response.status === 200) {
+      setUser(null);
+      setToken(null);
+      navigate("/");
+    }
+  };
+
   return (
     <nav className="px-4 py-4">
       <div>
@@ -49,30 +66,54 @@ const Navbar = () => {
             >
               Posts
             </NavLink>
-            <NavLink
-              to="/write"
-              className={({ isActive }) =>
-                isActive ? "text-sky-400" : "text-gray-300"
-              }
-            >
-              Write post
-            </NavLink>
-            <NavLink
-              to="/login"
-              className={({ isActive }) =>
-                isActive ? "text-sky-400" : "text-gray-300"
-              }
-            >
-              Login
-            </NavLink>
-            <NavLink
-              to="/register"
-              className={({ isActive }) =>
-                isActive ? "text-sky-400" : "text-gray-300"
-              }
-            >
-              Sign up
-            </NavLink>
+
+            {user ? (
+              <>
+                <NavLink
+                  to="/write"
+                  className={({ isActive }) =>
+                    isActive ? "text-sky-400" : "text-gray-300"
+                  }
+                >
+                  Write post
+                </NavLink>
+
+                <div className="group relative hover:cursor-pointer">
+                  <span className="font-bold text-gray-300">
+                    Welcome, {userName}
+                  </span>
+                  <div className="absolute hidden w-full rounded bg-gray-800 p-2 text-white group-hover:block group-hover:cursor-pointer">
+                    <form onSubmit={handleSubmitLogout} className="text-center">
+                      <button
+                        className="w-full hover:cursor-pointer"
+                        type="submit"
+                      >
+                        Logout
+                      </button>
+                    </form>
+                  </div>
+                </div>
+              </>
+            ) : (
+              <>
+                <NavLink
+                  to="/login"
+                  className={({ isActive }) =>
+                    isActive ? "text-sky-400" : "text-gray-300"
+                  }
+                >
+                  Login
+                </NavLink>
+                <NavLink
+                  to="/register"
+                  className={({ isActive }) =>
+                    isActive ? "text-sky-400" : "text-gray-300"
+                  }
+                >
+                  Sign up
+                </NavLink>
+              </>
+            )}
           </div>
           <div
             onClick={() => setIsMobile(!isMobile)}
@@ -112,33 +153,57 @@ const Navbar = () => {
             >
               Posts
             </NavLink>
-            <NavLink
-              to="/write"
-              onClick={() => setIsMobile(false)}
-              className={({ isActive }) =>
-                isActive ? "text-sky-400" : "text-gray-300"
-              }
-            >
-              Write post
-            </NavLink>
-            <NavLink
-              to="/login"
-              onClick={() => setIsMobile(false)}
-              className={({ isActive }) =>
-                isActive ? "text-sky-400" : "text-gray-300"
-              }
-            >
-              Login
-            </NavLink>
-            <NavLink
-              to="/register"
-              onClick={() => setIsMobile(false)}
-              className={({ isActive }) =>
-                isActive ? "text-sky-400" : "text-gray-300"
-              }
-            >
-              Sign up
-            </NavLink>
+            {user ? (
+              <>
+                <NavLink
+                  to="/write"
+                  onClick={() => setIsMobile(false)}
+                  className={({ isActive }) =>
+                    isActive ? "text-sky-400" : "text-gray-300"
+                  }
+                >
+                  Write post
+                </NavLink>
+
+                <NavLink
+                  onClick={() => setIsMobile(false)}
+                  className="text-gray-300"
+                >
+                  Welcome, {userName}
+                </NavLink>
+
+                <form onSubmit={handleSubmitLogout} className="text-gray-300">
+                  <button
+                    onClick={() => setIsMobile(false)}
+                    className="w-full text-left"
+                    type="submit"
+                  >
+                    Logout
+                  </button>
+                </form>
+              </>
+            ) : (
+              <>
+                <NavLink
+                  to="/login"
+                  onClick={() => setIsMobile(false)}
+                  className={({ isActive }) =>
+                    isActive ? "text-sky-400" : "text-gray-300"
+                  }
+                >
+                  Login
+                </NavLink>
+                <NavLink
+                  to="/register"
+                  onClick={() => setIsMobile(false)}
+                  className={({ isActive }) =>
+                    isActive ? "text-sky-400" : "text-gray-300"
+                  }
+                >
+                  Sign up
+                </NavLink>
+              </>
+            )}
           </>
         )}
       </div>
