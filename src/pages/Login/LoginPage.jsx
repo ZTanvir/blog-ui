@@ -4,12 +4,14 @@ import useSWRMutation from "swr/mutation";
 import { useNavigate } from "react-router";
 import authServices from "../../services/authServices";
 import helperFunction from "../../utils/helperFunction";
+import { UseUser } from "../../context/UserContext";
 
 const LoginPage = () => {
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
   const { trigger, isMutating, error } = useSWRMutation("/api/auth/login", authServices.loginUser)
   const navigate = useNavigate()
+  const { setUser, setToken } = UseUser()
 
   const handleLoginForm = async (event) => {
     event.preventDefault()
@@ -19,8 +21,10 @@ const LoginPage = () => {
     }
     try {
       const result = await trigger(formData);
+      setUser(result?.user)
+      setToken(result?.accessToken)
+
       navigate("/")
-      console.log(result);
     } catch (err) {
       console.error(err, error);
     }

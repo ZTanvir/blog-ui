@@ -1,6 +1,7 @@
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 import { BrowserRouter, Routes, Route } from "react-router";
+import { UserContextProvider } from "./context/UserContext.jsx";
 import "./index.css";
 import BlogLayout from "./Layouts/BlogLayout.jsx";
 import HomePage from "./pages/Home/HomePage.jsx";
@@ -12,17 +13,19 @@ import WritePostPage from "./pages/WritePosts/WritePostPage.jsx";
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
-    <BrowserRouter>
-      <Routes>
-        <Route element={<BlogLayout />}>
-          <Route index element={<HomePage />} />
-          <Route path="about" element={<AboutPage />} />
-          <Route path="posts" element={<PostsPage />} />
-          <Route path="write" element={<WritePostPage />} />
-          <Route path="login" element={<LoginPage />} />
-          <Route path="register" element={<SignUpPage />} />
-        </Route>
-      </Routes>
-    </BrowserRouter>
+    <UserContextProvider>
+      <BrowserRouter>
+        <Routes>
+          <Route element={<BlogLayout />}>
+            <Route index element={<HomePage />} />
+            <Route path="about" element={<AboutPage />} />
+            <Route path="posts" element={<PostsPage />} />
+            <Route path="write" element={<WritePostPage />} />
+            <Route path="login" element={<LoginPage />} />
+            <Route path="register" element={<SignUpPage />} />
+          </Route>
+        </Routes>
+      </BrowserRouter>
+    </UserContextProvider>
   </StrictMode>,
 );
