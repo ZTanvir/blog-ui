@@ -1,8 +1,12 @@
 import { useState } from "react";
+import { UseUser } from "../../context/UserContext";
 
 const Comment = () => {
   const [name, setName] = useState("");
   const [comment, setComment] = useState("");
+
+  const { user } = UseUser();
+  console.log(user);
 
   return (
     <div className="mx-auto my-4 w-[90%] rounded bg-neutral-100/50 p-4 shadow-sm">
@@ -32,7 +36,9 @@ const Comment = () => {
           ></textarea>
         </div>
         <button
-          className="w-full rounded-lg bg-sky-600 px-3 py-2 text-white duration-300 hover:cursor-pointer hover:bg-sky-500 disabled:bg-sky-500 disabled:hover:cursor-not-allowed sm:w-fit"
+          disabled={user ? false : true}
+          title={user ? "Add a comment" : "Please login to add comment."}
+          className="w-full rounded-lg bg-sky-600 px-3 py-2 text-white duration-300 hover:cursor-pointer hover:bg-sky-500 disabled:bg-sky-300 disabled:hover:cursor-not-allowed sm:w-fit"
           type="submit"
         >
           Add comment
