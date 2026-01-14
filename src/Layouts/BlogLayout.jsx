@@ -12,7 +12,7 @@ const BlogLayout = () => {
       </main>
       <footer className="bg-gray-900">
         <Footer />
-        </footer>
+      </footer>
     </div>
   );
 };

@@ -22,5 +22,15 @@ const getLatestPosts = async (limit, order) => {
   }
 };
 
+const getSinglePost = async (postId) => {
+  try {
+    const response = await axiosApi.get(`api/posts/${postId}`)
+    return response.data;
+  } catch (error) {
+    console.error(error);
+    throw error;
+  }
+}
 
-export default { getPosts, getLatestPosts };
+
+export default { getPosts, getLatestPosts, getSinglePost };

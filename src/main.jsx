@@ -9,6 +9,7 @@ import AboutPage from "./pages/About/AboutPage.jsx";
 import LoginPage from "./pages/Login/LoginPage.jsx";
 import SignUpPage from "./pages/Register/SignUpPage.jsx";
 import PostsPage from "./pages/Posts/PostsPage.jsx";
+import PostPage from "./pages/Post/PostPage.jsx";
 import WritePostPage from "./pages/WritePosts/WritePostPage.jsx";
 
 createRoot(document.getElementById("root")).render(
@@ -20,6 +21,7 @@ createRoot(document.getElementById("root")).render(
             <Route index element={<HomePage />} />
             <Route path="about" element={<AboutPage />} />
             <Route path="posts" element={<PostsPage />} />
+            <Route path="posts/:postId" element={<PostPage />} />
             <Route path="write" element={<WritePostPage />} />
             <Route path="login" element={<LoginPage />} />
             <Route path="register" element={<SignUpPage />} />
