@@ -16,7 +16,12 @@ const PostCard = ({ postData }) => {
       </div>
       <div className="flex gap-2">
         {postData?.tag.map((tag, index) => (
-          <Tag key={index} tag={tag} />
+          <Tag
+            key={index}
+            tag={tag}
+            bgColorClass="bg-gray-500"
+            textColorClass="text-white"
+          />
         ))}
       </div>
 
