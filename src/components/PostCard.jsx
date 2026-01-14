@@ -1,5 +1,6 @@
 import { Link } from "react-router";
 import { FaArrowRightLong } from "react-icons/fa6";
+import Tag from "./Tag";
 
 const PostCard = ({ postData }) => {
   const postDate =
@@ -15,12 +16,7 @@ const PostCard = ({ postData }) => {
       </div>
       <div className="flex gap-2">
         {postData?.tag.map((tag, index) => (
-          <span
-            className="inline-block rounded-md bg-gray-500 px-2 py-1 text-white"
-            key={index}
-          >
-            {tag}
-          </span>
+          <Tag key={index} tag={tag} />
         ))}
       </div>
 
