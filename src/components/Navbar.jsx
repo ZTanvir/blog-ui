@@ -5,6 +5,7 @@ import blogLogo from "../assets/images/blogging.png";
 import { UseUser } from "../context/UserContext";
 import authServices from "../services/authServices";
 import { useNavigate } from "react-router";
+import { IoIosArrowDown } from "react-icons/io";
 
 const Navbar = () => {
   const [isMobile, setIsMobile] = useState(false);
@@ -79,8 +80,8 @@ const Navbar = () => {
                 </NavLink>
 
                 <div className="group relative hover:cursor-pointer">
-                  <span className="font-bold text-gray-300">
-                    Welcome, {userName}
+                  <span className="flex items-center font-bold text-gray-300">
+                    Welcome, {userName} <IoIosArrowDown size={15} />
                   </span>
                   <div className="absolute hidden w-full rounded bg-gray-800 p-2 text-white group-hover:block group-hover:cursor-pointer">
                     <form onSubmit={handleSubmitLogout} className="text-center">
