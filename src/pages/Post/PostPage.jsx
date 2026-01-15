@@ -4,6 +4,7 @@ import useSWR from "swr";
 import Spinner from "../../components/Spinner";
 import Tag from "../../components/Tag";
 import Comment from "./Comment";
+import CommentList from "./CommentList";
 
 const PostPage = () => {
   const { postId } = useParams();
@@ -58,6 +59,7 @@ const PostPage = () => {
           <div>
             <h3 className="my-4 text-2xl font-semibold sm:my-8">Comments</h3>
             <Comment />
+            <CommentList postId={postId} />
           </div>
         </div>
       )}
