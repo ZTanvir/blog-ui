@@ -6,7 +6,6 @@ const Comment = () => {
   const [comment, setComment] = useState("");
 
   const { user } = UseUser();
-  console.log(user);
 
   return (
     <div className="mx-auto my-4 w-[90%] rounded bg-neutral-100/50 p-4 shadow-sm">
@@ -15,13 +14,19 @@ const Comment = () => {
         <div className="mb-4 flex flex-col gap-2">
           <label htmlFor="username">Name</label>
           <input
-            className="w-full rounded border border-gray-300 bg-white p-2 shadow-sm outline-sky-300"
-            value={name}
+            className="w-full rounded border border-gray-300 bg-white p-2 shadow-sm outline-sky-300 disabled:bg-gray-200 disabled:text-gray-500 disabled:hover:cursor-not-allowed"
+            value={user ? user.username : name}
+            disabled={user ? true : false}
             onChange={(e) => setName(e.target.value)}
             type="text"
             name="name"
             id="username"
           />
+          {user && (
+            <p className="text-sm text-gray-600">
+              You are commenting as {user.username}
+            </p>
+          )}
         </div>
         <div className="mb-4 flex flex-col gap-2">
           <label htmlFor="userComment">Comment</label>
