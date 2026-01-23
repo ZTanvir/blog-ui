@@ -5,6 +5,12 @@ const registerUser = async (url, { arg }) => {
   return response.data;
 };
 
+const refreshToken = async (url, { arg }) => {
+  const response = await axiosApi.post(url, arg);
+  return response.data;
+};
+
+
 const loginUser = async (url, { arg }) => {
   const response = await axiosApi.post(url, arg)
   return response.data
@@ -15,4 +21,4 @@ const logoutUser = async () => {
   return response
 }
 
-export default { registerUser, loginUser, logoutUser }
+export default { registerUser, refreshToken, loginUser, logoutUser }

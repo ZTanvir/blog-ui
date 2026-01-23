@@ -9,6 +9,7 @@ const Comment = () => {
 
   const handleFormSubmit = (event) => {
     event.preventDefault();
+    
   };
 
   return (

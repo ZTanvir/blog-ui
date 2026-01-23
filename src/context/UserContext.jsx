@@ -1,18 +1,45 @@
-import { createContext, useContext, useState } from "react"
+import { createContext, useContext, useEffect, useState } from "react";
+import authServices from "../services/authServices";
+import useSWRMutation from "swr/mutation";
 
 const UserContext = createContext(undefined);
 
 export const UserContextProvider = ({ children }) => {
-    const [user, setUser] = useState(undefined)
-    const [token, setToken] = useState(undefined)
+  const [user, setUser] = useState(undefined);
+  const [token, setToken] = useState(undefined);
+  const { trigger } = useSWRMutation(
+    "api/auth/refresh",
+    authServices.refreshToken,
+  );
 
-    return <UserContext value={{ user, setUser, token, setToken }}>{children}</UserContext>
-}
+  useEffect(() => {
+    const loadAuth = async () => {
+      try {
+        const result = await trigger();
+        setUser(result?.user);
+        setToken(result?.accessToken);
+      } catch (error) {
+        console.error(
+          "Error on sending refresh token post request:",
+          error?.response?.data,
+        );
+      }
+    };
+
+    loadAuth();
+  }, []);
+
+  return (
+    <UserContext value={{ user, setUser, token, setToken }}>
+      {children}
+    </UserContext>
+  );
+};
 
 export const UseUser = () => {
-    const userContext = useContext(UserContext)
-    if (!userContext) {
-        throw new Error("user not in useContext ")
-    }
-    return userContext
-}
+  const userContext = useContext(UserContext);
+  if (!userContext) {
+    throw new Error("user not in useContext ");
+  }
+  return userContext;
+};

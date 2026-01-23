@@ -7,28 +7,31 @@ import helperFunction from "../../utils/helperFunction";
 import { UseUser } from "../../context/UserContext";
 
 const LoginPage = () => {
-  const [email, setEmail] = useState("")
-  const [password, setPassword] = useState("")
-  const { trigger, isMutating, error } = useSWRMutation("/api/auth/login", authServices.loginUser)
-  const navigate = useNavigate()
-  const { setUser, setToken } = UseUser()
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const { trigger, isMutating, error } = useSWRMutation(
+    "/api/auth/login",
+    authServices.loginUser,
+  );
+  const navigate = useNavigate();
+  const { setUser, setToken } = UseUser();
 
   const handleLoginForm = async (event) => {
-    event.preventDefault()
+    event.preventDefault();
     const formData = {
       email,
-      password
-    }
+      password,
+    };
     try {
       const result = await trigger(formData);
-      setUser(result?.user)
-      setToken(result?.accessToken)
+      setUser(result?.user);
+      setToken(result?.accessToken);
 
-      navigate("/")
+      navigate("/");
     } catch (err) {
       console.error(err, error);
     }
-  }
+  };
 
   const allErrors = error?.response?.data?.errors;
 
@@ -36,7 +39,10 @@ const LoginPage = () => {
     <div>
       <h3 className="text-center text-2xl font-bold">Welcome back</h3>
       <p className="mt-4 text-center">Sign in your account to continue</p>
-      <form onSubmit={handleLoginForm} className="flex flex-col gap-4 rounded p-4 shadow-md">
+      <form
+        onSubmit={handleLoginForm}
+        className="flex flex-col gap-4 rounded p-4 shadow-md"
+      >
         <div className="flex flex-col gap-2">
           <label htmlFor="email">Email</label>
           <input
@@ -65,14 +71,16 @@ const LoginPage = () => {
             placeholder="password"
           />
           <p className="text-sm text-red-400">
-            {allErrors && helperFunction.filterFormErrorMsg(allErrors, "password")}
+            {allErrors &&
+              helperFunction.filterFormErrorMsg(allErrors, "password")}
           </p>
         </div>
 
         <button
           disabled={isMutating}
-          className="mt-8 rounded bg-sky-600 p-3 text-white duration-300 hover:cursor-pointer hover:bg-sky-500 disabled:hover:cursor-not-allowed disabled:bg-sky-500"
-          type="submit">
+          className="mt-8 rounded bg-sky-600 p-3 text-white duration-300 hover:cursor-pointer hover:bg-sky-500 disabled:bg-sky-500 disabled:hover:cursor-not-allowed"
+          type="submit"
+        >
           Sign in
         </button>
         <p className="text-center">
