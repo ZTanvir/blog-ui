@@ -1,15 +1,28 @@
 import { useState } from "react";
 import { UseUser } from "../../context/UserContext";
+import useSWRMutation from "swr/mutation";
+import commentService from "../../services/commentService";
+import { useParams } from "react-router";
 
 const Comment = () => {
   const [name, setName] = useState("");
   const [comment, setComment] = useState("");
+  const { postId } = useParams();
 
+  const { trigger } = useSWRMutation(
+    `/api/comments/post/${postId}`,
+    commentService.addComment,
+  );
   const { user } = UseUser();
 
-  const handleFormSubmit = (event) => {
+  const handleFormSubmit = async (event) => {
     event.preventDefault();
-    
+    try {
+      const result = await trigger({ comment });
+      console.log("comment post result", result);
+    } catch (error) {
+      console.error("Add comment error", error);
+    }
   };
 
   return (

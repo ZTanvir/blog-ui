@@ -11,4 +11,9 @@ const getComments = async (postId) => {
 
 }
 
-export default { getComments }
+const addComment = async (url, { arg }) => {
+    const response = await axiosApi.post(url, arg)
+    return response.data
+}
+
+export default { getComments, addComment }
