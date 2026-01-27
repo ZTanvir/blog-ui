@@ -2,6 +2,7 @@ import useSWR from "swr";
 import commentService from "../../services/commentService";
 import Spinner from "../../components/Spinner";
 import { LiaCommentDotsSolid } from "react-icons/lia";
+import { decode } from "html-entities";
 
 const CommentList = ({ postId }) => {
   const { data, error, isLoading } = useSWR(`api/comments/post/${postId}`, () =>
@@ -46,7 +47,10 @@ const CommentList = ({ postId }) => {
                   </p>
                 </header>
                 <div className="mt-2">
-                  <p>{c.comment}</p>
+                  <>
+                    <div>{decode(c.comment)}</div>
+                    {/* Renders as: Greetings <b>User</b> */}
+                  </>
                 </div>
               </article>
             ))
