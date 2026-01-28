@@ -10,11 +10,12 @@ const SignUpPage = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
+  const [isAuthor, setIsAuthor] = useState(false);
   const { trigger, isMutating, error } = useSWRMutation(
     "api/auth/register",
     authServices.registerUser,
   );
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   const handleSignupSubmit = async (e) => {
     e.preventDefault();
@@ -23,12 +24,14 @@ const SignUpPage = () => {
       email,
       password,
       confirmPassword,
+      isAuthor,
     };
+    console.log(formData);
     try {
       await trigger(formData);
       // user register successfully
       setTimeout(() => {
-        navigate("/login")
+        navigate("/login");
       }, 2000);
     } catch (error) {
       console.error(error?.response?.data?.errors);
@@ -36,7 +39,6 @@ const SignUpPage = () => {
   };
 
   const allErrors = error?.response?.data?.errors;
-
 
   return (
     <div>
@@ -61,7 +63,8 @@ const SignUpPage = () => {
             onChange={(e) => setUsername(e.target.value)}
           />
           <p className="text-sm text-red-400">
-            {allErrors && helperFunction.filterFormErrorMsg(allErrors, "username")}
+            {allErrors &&
+              helperFunction.filterFormErrorMsg(allErrors, "username")}
           </p>
         </div>
 
@@ -97,7 +100,8 @@ const SignUpPage = () => {
             onChange={(e) => setPassword(e.target.value)}
           />
           <p className="text-sm text-red-400">
-            {allErrors && helperFunction.filterFormErrorMsg(allErrors, "password")}
+            {allErrors &&
+              helperFunction.filterFormErrorMsg(allErrors, "password")}
           </p>
 
           {!allErrors && (
@@ -125,13 +129,28 @@ const SignUpPage = () => {
             onChange={(e) => setConfirmPassword(e.target.value)}
           />
           <p className="text-sm text-red-400">
-            {allErrors && helperFunction.filterFormErrorMsg(allErrors, "confirmPassword")}
+            {allErrors &&
+              helperFunction.filterFormErrorMsg(allErrors, "confirmPassword")}
           </p>
+        </div>
+
+        <div className="flex gap-2">
+          <input
+            className="rounded border border-gray-300 bg-gray-50 p-2 outline-sky-300"
+            type="checkbox"
+            name="isAuthor"
+            id="isAuthor"
+            value={isAuthor}
+            onChange={(e) => setIsAuthor(!isAuthor)}
+          />
+          <label className="font-medium text-gray-700" htmlFor="isAuthor">
+            Sign up as author.
+          </label>
         </div>
 
         <button
           disabled={isMutating}
-          className="mt-8 rounded bg-sky-600 p-3 text-white duration-300 hover:cursor-pointer hover:bg-sky-500 disabled:hover:cursor-not-allowed disabled:bg-sky-500"
+          className="mt-8 rounded bg-sky-600 p-3 text-white duration-300 hover:cursor-pointer hover:bg-sky-500 disabled:bg-sky-500 disabled:hover:cursor-not-allowed"
           type="submit"
         >
           {isMutating ? "Submitting..." : "Sign up"}
