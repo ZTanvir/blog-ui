@@ -26,7 +26,6 @@ const SignUpPage = () => {
       confirmPassword,
       isAuthor,
     };
-    console.log(formData);
     try {
       await trigger(formData);
       // user register successfully
@@ -140,11 +139,11 @@ const SignUpPage = () => {
             type="checkbox"
             name="isAuthor"
             id="isAuthor"
-            value={isAuthor}
-            onChange={(e) => setIsAuthor(!isAuthor)}
+            checked={isAuthor}
+            onChange={(e) => setIsAuthor(e.target.checked)}
           />
           <label className="font-medium text-gray-700" htmlFor="isAuthor">
-            Sign up as author.
+            Sign up as author
           </label>
         </div>
 
