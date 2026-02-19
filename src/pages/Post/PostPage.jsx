@@ -5,6 +5,7 @@ import Spinner from "../../components/Spinner";
 import Tag from "../../components/Tag";
 import Comment from "./Comment";
 import CommentList from "./CommentList";
+import helperFunction from "../../utils/helperFunction";
 
 const PostPage = () => {
   const { postId } = useParams();
@@ -54,7 +55,12 @@ const PostPage = () => {
               />
             ))}
           </div>
-          <div>{data.content}</div>
+          <article
+            className="prose"
+            dangerouslySetInnerHTML={{
+              __html: helperFunction.unsanitized(data.content),
+            }}
+          />
           <hr className="my-4 text-gray-200" />
           <div>
             <h3 className="my-4 text-2xl font-semibold sm:my-8">Comments</h3>
