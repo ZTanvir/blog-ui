@@ -5,9 +5,14 @@ import { SlRefresh } from "react-icons/sl";
 import Spinner from "./Spinner";
 
 const LatestPosts = ({ limit, order }) => {
-  const { data, isLoading, error, mutate } = useSWR(`api/posts?sort=date`, () =>
-    postService.getLatestPosts(limit, order),
+  const { data, isLoading, error, mutate, isValidating } = useSWR(
+    `api/posts?sort=date`,
+    () => postService.getLatestPosts(limit, order),
   );
+
+  const handleRefresh = async () => {
+    mutate();
+  };
 
   if (error) {
     return <p>{error.message}</p>;
@@ -25,10 +30,6 @@ const LatestPosts = ({ limit, order }) => {
       </div>
     );
 
-  const handleRefresh = () => {
-    mutate();
-  };
-
   return (
     <div>
       {data && (
@@ -39,7 +40,9 @@ const LatestPosts = ({ limit, order }) => {
               onClick={handleRefresh}
               className="flex items-center gap-2 text-sky-500 hover:cursor-pointer hover:text-sky-600"
             >
-              <SlRefresh />
+              <SlRefresh
+                className={`${(isLoading || isValidating) && "animate-spin"}`}
+              />
               Refresh
             </span>
           </div>
