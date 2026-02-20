@@ -65,18 +65,18 @@ const Navbar = () => {
                 isActive ? "text-sky-400" : "text-gray-300"
               }
             >
-              Posts
+              Stories
             </NavLink>
 
             {user ? (
               <>
                 <NavLink
-                  to="/write"
+                  to="http://localhost:5174"
                   className={({ isActive }) =>
                     isActive ? "text-sky-400" : "text-gray-300"
                   }
                 >
-                  Write post
+                  Write Stories
                 </NavLink>
 
                 <div className="group relative hover:cursor-pointer">
@@ -152,18 +152,18 @@ const Navbar = () => {
                 isActive ? "text-sky-400" : "text-gray-300"
               }
             >
-              Posts
+              Stories
             </NavLink>
             {user ? (
               <>
                 <NavLink
-                  to="/write"
+                  to="http://localhost:5174"
                   onClick={() => setIsMobile(false)}
                   className={({ isActive }) =>
                     isActive ? "text-sky-400" : "text-gray-300"
                   }
                 >
-                  Write post
+                  Write Stories
                 </NavLink>
 
                 <NavLink
