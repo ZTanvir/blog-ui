@@ -33,7 +33,7 @@ const PostsPage = () => {
       <h1 className="pt-4 text-center text-4xl font-bold text-gray-700">
         Available <span className="text-sky-500">dev</span> blog articles:
       </h1>
-      <form className="mt-2 px-4">
+      <form className="mt-6 px-4">
         <div className="flex flex-col">
           <input
             type="text"
