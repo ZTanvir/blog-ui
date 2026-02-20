@@ -30,17 +30,17 @@ const PostsPage = () => {
 
   return (
     <div>
-      <h1 className="text-center text-4xl font-bold text-gray-700">
+      <h1 className="pt-4 text-center text-4xl font-bold text-gray-700">
         Available <span className="text-sky-500">dev</span> blog articles:
       </h1>
-      <form>
-        <div className="flex flex-col lg:items-center">
+      <form className="mt-2 px-4">
+        <div className="flex flex-col">
           <input
             type="text"
             value={searchPost}
             onChange={(e) => setSearchPost(e.target.value)}
             placeholder="Search by title.."
-            className="w-full max-w-sm rounded-sm border border-gray-200 px-2 py-2 font-light outline-gray-300"
+            className="flex-1 rounded-sm border border-gray-200 px-2 py-2 font-light outline-gray-300"
           />
         </div>
       </form>

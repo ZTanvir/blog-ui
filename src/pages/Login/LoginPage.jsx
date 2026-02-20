@@ -36,8 +36,10 @@ const LoginPage = () => {
   const allErrors = error?.response?.data?.errors;
 
   return (
-    <div>
-      <h3 className="text-center text-2xl font-bold">Welcome back</h3>
+    <div className="p-4">
+      <h3 className="text-center text-2xl font-bold md:text-4xl">
+        Welcome back
+      </h3>
       <p className="mt-4 text-center">Sign in your account to continue</p>
       <form
         onSubmit={handleLoginForm}

@@ -40,8 +40,10 @@ const SignUpPage = () => {
   const allErrors = error?.response?.data?.errors;
 
   return (
-    <div>
-      <h3 className="text-center text-2xl font-bold">Create an account</h3>
+    <div className="p-4">
+      <h1 className="text-center text-2xl font-bold md:text-4xl">
+        Create an account
+      </h1>
       <p className="mt-4 text-center">Join our community and start sharing</p>
 
       <form
