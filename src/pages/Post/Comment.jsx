@@ -4,10 +4,12 @@ import useSWRMutation from "swr/mutation";
 import commentService from "../../services/commentService";
 import { useParams } from "react-router";
 import { mutate } from "swr";
+import helperFunction from "../../utils/helperFunction";
 
 const Comment = () => {
   const [name, setName] = useState("");
   const [comment, setComment] = useState("");
+  const [errorMsg, setErrorMsg] = useState([]);
   const { postId } = useParams();
 
   const { trigger } = useSWRMutation(
@@ -23,11 +25,14 @@ const Comment = () => {
       if (result) {
         mutate(`api/comments/post/${postId}`);
         setComment("");
+        setErrorMsg([]);
       }
     } catch (error) {
-      console.error("Add comment error", error);
+      setErrorMsg(error);
     }
   };
+
+  console.log(errorMsg);
 
   return (
     <div className="mx-auto my-4 w-[90%] rounded bg-neutral-100/50 p-4 shadow-sm">
@@ -61,6 +66,11 @@ const Comment = () => {
             rows={6}
             placeholder="Write your comment..."
           ></textarea>
+          {errorMsg.length > 0 && (
+            <p className="text-sm text-red-400">
+              {helperFunction.filterFormErrorMsg(errorMsg, "comment")}
+            </p>
+          )}
         </div>
         <button
           disabled={user ? false : true}
