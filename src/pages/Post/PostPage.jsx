@@ -29,8 +29,10 @@ const PostPage = () => {
   return (
     <>
       {data && (
-        <div>
-          <h1 className="mb-4 text-4xl">{data.title}</h1>
+        <div className="p-4">
+          <h1 className="mb-4 text-4xl font-bold text-gray-600">
+            {data.title}
+          </h1>
           <p className="mb-1">
             <span className="text-neutral-500 italic">Publish by</span>{" "}
             {data.user.username} on{" "}
@@ -56,7 +58,7 @@ const PostPage = () => {
             ))}
           </div>
           <article
-            className="prose"
+            className="prose my-12"
             dangerouslySetInnerHTML={{
               __html: helperFunction.unsanitized(data.content),
             }}

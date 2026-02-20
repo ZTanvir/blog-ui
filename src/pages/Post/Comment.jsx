@@ -32,11 +32,11 @@ const Comment = () => {
     }
   };
 
-  console.log(errorMsg);
-
   return (
     <div className="mx-auto my-4 w-[90%] rounded bg-neutral-100/50 p-4 shadow-sm">
-      <h4 className="mb-4 text-xl font-semibold">Add a comment</h4>
+      <h4 className="mb-4 text-xl font-semibold text-gray-600">
+        Add a comment
+      </h4>
       <form onSubmit={handleFormSubmit}>
         <div className="mb-4 flex flex-col gap-2">
           <label htmlFor="username">Name</label>
