@@ -33,7 +33,7 @@ const LatestPosts = ({ limit, order }) => {
     <div>
       {data && (
         <div className="my-8">
-          <div className="mb-4 flex flex-wrap justify-between gap-2">
+          <div className="mb-4 flex flex-wrap justify-between gap-2 px-4">
             <h3 className="text-3xl font-bold">Latest Stories </h3>
             <span
               onClick={handleRefresh}
