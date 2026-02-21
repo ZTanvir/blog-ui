@@ -11,7 +11,8 @@ const SignUpPage = () => {
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [isAuthor, setIsAuthor] = useState(false);
-  const { trigger, isMutating, error } = useSWRMutation(
+  const [errorMsgs, setErrorMsgs] = useState([]);
+  const { trigger, isMutating } = useSWRMutation(
     "api/auth/register",
     authServices.registerUser,
   );
@@ -33,11 +34,9 @@ const SignUpPage = () => {
         navigate("/login");
       }, 2000);
     } catch (error) {
-      console.error(error?.response?.data?.errors);
+      setErrorMsgs(error);
     }
   };
-
-  const allErrors = error?.response?.data?.errors;
 
   return (
     <div className="p-4">
@@ -64,8 +63,8 @@ const SignUpPage = () => {
             onChange={(e) => setUsername(e.target.value)}
           />
           <p className="text-sm text-red-400">
-            {allErrors &&
-              helperFunction.filterFormErrorMsg(allErrors, "username")}
+            {errorMsgs &&
+              helperFunction.filterFormErrorMsg(errorMsgs, "username")}
           </p>
         </div>
 
@@ -83,7 +82,7 @@ const SignUpPage = () => {
             onChange={(e) => setEmail(e.target.value)}
           />
           <p className="text-sm text-red-400">
-            {allErrors && helperFunction.filterFormErrorMsg(allErrors, "email")}
+            {errorMsgs && helperFunction.filterFormErrorMsg(errorMsgs, "email")}
           </p>
         </div>
 
@@ -101,11 +100,11 @@ const SignUpPage = () => {
             onChange={(e) => setPassword(e.target.value)}
           />
           <p className="text-sm text-red-400">
-            {allErrors &&
-              helperFunction.filterFormErrorMsg(allErrors, "password")}
+            {errorMsgs &&
+              helperFunction.filterFormErrorMsg(errorMsgs, "password")}
           </p>
 
-          {!allErrors && (
+          {!errorMsgs.length && (
             // display this before send api request to api
             <span className="text-sm text-gray-600">
               Must be at least 6 characters
@@ -130,8 +129,8 @@ const SignUpPage = () => {
             onChange={(e) => setConfirmPassword(e.target.value)}
           />
           <p className="text-sm text-red-400">
-            {allErrors &&
-              helperFunction.filterFormErrorMsg(allErrors, "confirmPassword")}
+            {errorMsgs &&
+              helperFunction.filterFormErrorMsg(errorMsgs, "confirmPassword")}
           </p>
         </div>
 
