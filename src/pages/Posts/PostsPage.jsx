@@ -44,7 +44,11 @@ const PostsPage = () => {
           />
         </div>
       </form>
-      {posts && <PostCardsList posts={posts} />}
+      {posts.length ? (
+        <PostCardsList posts={posts} />
+      ) : (
+        <p className="pt-4 text-center text-xl">Stories not found.</p>
+      )}
     </div>
   );
 };
