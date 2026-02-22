@@ -4,6 +4,7 @@ import { useNavigate } from "react-router";
 import useSWRMutation from "swr/mutation";
 import authServices from "../../services/authServices";
 import helperFunction from "../../utils/helperFunction";
+import { UseUser } from "../../context/UserContext";
 
 const SignUpPage = () => {
   const [username, setUsername] = useState("");
@@ -17,6 +18,7 @@ const SignUpPage = () => {
     authServices.registerUser,
   );
   const navigate = useNavigate();
+  const { setUser, setToken } = UseUser();
 
   const handleSignupSubmit = async (e) => {
     e.preventDefault();
@@ -28,11 +30,13 @@ const SignUpPage = () => {
       isAuthor,
     };
     try {
-      await trigger(formData);
+      const response = await trigger(formData);
+      setUser(response?.user);
+      setToken(response?.accessToken);
       // user register successfully
       setTimeout(() => {
-        navigate("/login");
-      }, 2000);
+        navigate("/");
+      }, 1000);
     } catch (error) {
       setErrorMsgs(error);
     }

@@ -21,10 +21,10 @@ export const UserContextProvider = ({ children }) => {
         setToken(result?.accessToken);
         setStoredAuthToken(result?.accessToken);
       } catch (error) {
-        console.error(
-          "Error on sending refresh token post request:",
-          error?.response?.data,
-        );
+        // console.error(
+        //   "Error on sending refresh token post request:",
+        //   error?.response?.data,
+        // );
       }
     };
 

@@ -72,6 +72,7 @@ const Navbar = () => {
               <>
                 <NavLink
                   to="http://localhost:5174"
+                  target="_blank"
                   className={({ isActive }) =>
                     isActive ? "text-sky-400" : "text-gray-300"
                   }
@@ -158,6 +159,7 @@ const Navbar = () => {
               <>
                 <NavLink
                   to="http://localhost:5174"
+                  target="_blank"
                   onClick={() => setIsMobile(false)}
                   className={({ isActive }) =>
                     isActive ? "text-sky-400" : "text-gray-300"

@@ -1,6 +1,9 @@
 import { Link } from "react-router";
+import { UseUser } from "../../context/UserContext";
 
 const HomeDetails = () => {
+  const { user } = UseUser();
+
   return (
     <div className="bg-gray-100 px-4 py-8">
       <h2 className="mb-4 text-center text-4xl font-bold tracking-wide text-gray-900">
@@ -13,8 +16,9 @@ const HomeDetails = () => {
 
       <div className="flex flex-wrap items-center justify-center gap-6">
         <Link
+          target={user && "_blank"}
           className="rounded-lg bg-sky-600 px-8 py-3 text-lg text-white duration-200 hover:bg-sky-900"
-          to="/write"
+          to={user ? "http://localhost:5174" : "/login"}
         >
           Start Writing
         </Link>
