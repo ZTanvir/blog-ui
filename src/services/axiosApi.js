@@ -3,7 +3,7 @@ import { getStoredAuthToken, setStoredAuthToken } from "../utils/authToken";
 import authServices from "./authServices";
 
 const axiosApi = axios.create({
-  baseURL: "http://localhost:8000/",
+  baseURL: `${import.meta.env.VITE_BLOG_API_URL}`,
   withCredentials: true,
   headers: {
     "Content-Type": "application/json",

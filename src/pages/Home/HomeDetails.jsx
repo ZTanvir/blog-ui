@@ -18,7 +18,7 @@ const HomeDetails = () => {
         <Link
           target={user && "_blank"}
           className="rounded-lg bg-sky-600 px-8 py-3 text-lg text-white duration-200 hover:bg-sky-900"
-          to={user ? "http://localhost:5174" : "/login"}
+          to={user ? `${import.meta.env.VITE_AUTHOR_WEBPAGE_URL}` : "/login"}
         >
           Start Writing
         </Link>

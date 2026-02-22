@@ -71,7 +71,7 @@ const Navbar = () => {
             {user ? (
               <>
                 <NavLink
-                  to="http://localhost:5174"
+                  to={`${import.meta.env.VITE_AUTHOR_WEBPAGE_URL}`}
                   target="_blank"
                   className={({ isActive }) =>
                     isActive ? "text-sky-400" : "text-gray-300"
@@ -158,7 +158,7 @@ const Navbar = () => {
             {user ? (
               <>
                 <NavLink
-                  to="http://localhost:5174"
+                  to={`${import.meta.env.VITE_AUTHOR_WEBPAGE_URL}`}
                   target="_blank"
                   onClick={() => setIsMobile(false)}
                   className={({ isActive }) =>
