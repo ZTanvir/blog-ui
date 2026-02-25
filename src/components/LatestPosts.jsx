@@ -3,6 +3,7 @@ import postService from "../services/postService";
 import PostCardsList from "./PostCardsList";
 import { SlRefresh } from "react-icons/sl";
 import Spinner from "./Spinner";
+import NotFound from "./NotFound";
 
 const LatestPosts = ({ limit, order }) => {
   const { data, isLoading, error, mutate, isValidating } = useSWR(
@@ -13,9 +14,12 @@ const LatestPosts = ({ limit, order }) => {
   const handleRefresh = async () => {
     mutate();
   };
+  const handleRetryBtn = () => {
+    mutate();
+  };
 
   if (error) {
-    return <p>{error.message}</p>;
+    return <NotFound errorMsg={error?.message} onRetryBtn={handleRetryBtn} />;
   }
   if (isLoading)
     return (

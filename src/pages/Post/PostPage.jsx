@@ -6,14 +6,21 @@ import Tag from "../../components/Tag";
 import Comment from "./Comment";
 import CommentList from "./CommentList";
 import helperFunction from "../../utils/helperFunction";
+import NotFound from "../../components/NotFound";
 
 const PostPage = () => {
   const { postId } = useParams();
-  const { data, error, isLoading } = useSWR(`api/posts/${postId}`, () =>
+  const { data, error, isLoading, mutate } = useSWR(`api/posts/${postId}`, () =>
     postService.getSinglePost(postId),
   );
 
-  if (error) return <p>{error.message}</p>;
+  const handleRetryBtn = () => {
+    mutate();
+  };
+
+  if (error)
+    return <NotFound errorMsg={error.message} onRetryBtn={handleRetryBtn} />;
+
   if (isLoading)
     return (
       <div className="flex h-full flex-col items-center justify-center gap-2">

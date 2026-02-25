@@ -3,8 +3,13 @@ import { useState } from "react";
 import postService from "../../services/postService";
 import PostCardsList from "../../components/PostCardsList";
 import Spinner from "../../components/Spinner";
+import NotFound from "../../components/NotFound";
+
 const PostsPage = () => {
-  const { data, error, isLoading } = useSWR("api/posts", postService.getPosts);
+  const { data, error, isLoading, mutate } = useSWR(
+    "api/posts",
+    postService.getPosts,
+  );
   const [searchPost, setSearchPost] = useState("");
 
   // filter post based on user search input
@@ -14,7 +19,13 @@ const PostsPage = () => {
       post.title.toLowerCase().includes(searchPost.toLowerCase()),
     );
 
-  if (error) return <p>{error.message}</p>;
+  const handleRetryBtn = () => {
+    mutate();
+  };
+
+  if (error)
+    return <NotFound onRetryBtn={handleRetryBtn} errorMsg={error.message} />;
+
   if (isLoading)
     return (
       <div className="flex h-full flex-col items-center justify-center gap-2">
