@@ -15,17 +15,10 @@ export const UserContextProvider = ({ children }) => {
 
   useEffect(() => {
     const loadAuth = async () => {
-      try {
-        const result = await trigger();
-        setUser(result?.user);
-        setToken(result?.accessToken);
-        setStoredAuthToken(result?.accessToken);
-      } catch (error) {
-        // console.error(
-        //   "Error on sending refresh token post request:",
-        //   error?.response?.data,
-        // );
-      }
+      const result = await trigger();
+      setUser(result?.user);
+      setToken(result?.accessToken);
+      setStoredAuthToken(result?.accessToken);
     };
 
     loadAuth();
