@@ -46,7 +46,7 @@ const Navbar = () => {
             <NavLink
               to="/"
               className={({ isActive }) =>
-                isActive ? "text-sky-400" : "text-gray-300"
+                `${isActive ? "text-sky-400" : "text-gray-300"} hover:text-sky-400`
               }
             >
               Homepage
@@ -54,7 +54,7 @@ const Navbar = () => {
             <NavLink
               to="/about"
               className={({ isActive }) =>
-                isActive ? "text-sky-400" : "text-gray-300"
+                `${isActive ? "text-sky-400" : "text-gray-300"} hover:text-sky-400`
               }
             >
               About
@@ -62,7 +62,7 @@ const Navbar = () => {
             <NavLink
               to="/posts"
               className={({ isActive }) =>
-                isActive ? "text-sky-400" : "text-gray-300"
+                `${isActive ? "text-sky-400" : "text-gray-300"} hover:text-sky-400`
               }
             >
               Stories
@@ -74,7 +74,7 @@ const Navbar = () => {
                   to={`${import.meta.env.VITE_AUTHOR_WEBPAGE_URL}`}
                   target="_blank"
                   className={({ isActive }) =>
-                    isActive ? "text-sky-400" : "text-gray-300"
+                    `${isActive ? "text-sky-400" : "text-gray-300"} hover:text-sky-400`
                   }
                 >
                   Write Stories
@@ -101,7 +101,7 @@ const Navbar = () => {
                 <NavLink
                   to="/login"
                   className={({ isActive }) =>
-                    isActive ? "text-sky-400" : "text-gray-300"
+                    `${isActive ? "text-sky-400" : "text-gray-300"} hover:text-sky-400`
                   }
                 >
                   Login
@@ -109,7 +109,7 @@ const Navbar = () => {
                 <NavLink
                   to="/register"
                   className={({ isActive }) =>
-                    isActive ? "text-sky-400" : "text-gray-300"
+                    `${isActive ? "text-sky-400" : "text-gray-300"} hover:text-sky-400`
                   }
                 >
                   Sign up
@@ -132,7 +132,7 @@ const Navbar = () => {
               to="/"
               onClick={() => setIsMobile(false)}
               className={({ isActive }) =>
-                isActive ? "mt-6 text-sky-400" : "mt-6 text-gray-300"
+                `${isActive ? "mt-6 text-sky-400" : "mt-6 text-gray-300"} hover:text-sky-400`
               }
             >
               Homepage
@@ -141,7 +141,7 @@ const Navbar = () => {
               to="/about"
               onClick={() => setIsMobile(false)}
               className={({ isActive }) =>
-                isActive ? "text-sky-400" : "text-gray-300"
+                `${isActive ? "text-sky-400" : "text-gray-300"} hover:text-sky-400`
               }
             >
               About
@@ -150,7 +150,7 @@ const Navbar = () => {
               to="/posts"
               onClick={() => setIsMobile(false)}
               className={({ isActive }) =>
-                isActive ? "text-sky-400" : "text-gray-300"
+                `${isActive ? "text-sky-400" : "text-gray-300"} hover:text-sky-400`
               }
             >
               Stories
@@ -162,7 +162,7 @@ const Navbar = () => {
                   target="_blank"
                   onClick={() => setIsMobile(false)}
                   className={({ isActive }) =>
-                    isActive ? "text-sky-400" : "text-gray-300"
+                    `${isActive ? "text-sky-400" : "text-gray-300"} hover:text-sky-400`
                   }
                 >
                   Write Stories
@@ -191,7 +191,7 @@ const Navbar = () => {
                   to="/login"
                   onClick={() => setIsMobile(false)}
                   className={({ isActive }) =>
-                    isActive ? "text-sky-400" : "text-gray-300"
+                    `${isActive ? "text-sky-400" : "text-gray-300"} hover:text-sky-400`
                   }
                 >
                   Login
@@ -200,7 +200,7 @@ const Navbar = () => {
                   to="/register"
                   onClick={() => setIsMobile(false)}
                   className={({ isActive }) =>
-                    isActive ? "text-sky-400" : "text-gray-300"
+                    `${isActive ? "text-sky-400" : "text-gray-300"} hover:text-sky-400`
                   }
                 >
                   Sign up
