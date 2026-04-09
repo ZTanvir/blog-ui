@@ -35,7 +35,7 @@ const CommentList = ({ postId }) => {
         <div>
           {data.length ? (
             data.map((c) => (
-              <Comment key={c.id} postId={postId} commentData={c} />
+              <Comment key={c?.id} postId={postId} commentData={c} />
             ))
           ) : (
             <EmptyComment />
@@ -61,7 +61,7 @@ function Comment({ postId, commentData }) {
   return (
     <article
       className="mx-auto my-4 w-[90%] rounded bg-neutral-100/50 p-4 text-gray-600 shadow-sm sm:my-8 sm:p-6"
-      key={commentData.id}
+      key={commentData?.id}
     >
       <header className="flex justify-between text-sm">
         <div>
@@ -71,11 +71,11 @@ function Comment({ postId, commentData }) {
           <p className="">
             <time>{new Date(commentData.createdAt).toDateString()}</time>
             <time className="ml-2">
-              {new Date(commentData.createdAt).toLocaleTimeString()}
+              {new Date(commentData?.createdAt).toLocaleTimeString()}
             </time>
           </p>
         </div>
-        {user.id === commentData.userId && (
+        {user?.id === commentData?.userId && (
           <button
             disabled={isMutating}
             onClick={handleDeleteBtn}
@@ -87,7 +87,7 @@ function Comment({ postId, commentData }) {
       </header>
       <div className="mt-2">
         <>
-          <div>{decode(commentData.comment)}</div>
+          <div>{decode(commentData?.comment)}</div>
           {/* Renders as: Greetings <b>User</b> */}
         </>
       </div>
