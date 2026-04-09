@@ -7,6 +7,7 @@ import { MdDelete } from "react-icons/md";
 import { UseUser } from "../../context/UserContext";
 import useSWRMutation from "swr/mutation";
 import { mutate } from "swr";
+import postService from "../../services/postService";
 
 const CommentList = ({ postId }) => {
   const { data, error, isLoading } = useSWR(`api/comments/post/${postId}`, () =>
@@ -48,6 +49,9 @@ const CommentList = ({ postId }) => {
 
 function Comment({ postId, commentData }) {
   const { user } = UseUser();
+  const { data: postData } = useSWR(`api/posts/${postId}`, () =>
+    postService.getSinglePost(postId),
+  );
   const { trigger, isMutating } = useSWRMutation(
     `/api/comments/post/${postId}/comments/${commentData.id}`,
     commentService.deleteComment,
@@ -75,7 +79,8 @@ function Comment({ postId, commentData }) {
             </time>
           </p>
         </div>
-        {user?.id === commentData?.userId && (
+        {(user?.id === commentData?.userId ||
+          user?.id === postData?.userId) && (
           <button
             disabled={isMutating}
             onClick={handleDeleteBtn}
