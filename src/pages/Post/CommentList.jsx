@@ -6,6 +6,7 @@ import { decode } from "html-entities";
 import { MdDelete } from "react-icons/md";
 import { UseUser } from "../../context/UserContext";
 import useSWRMutation from "swr/mutation";
+import { mutate } from "swr";
 
 const CommentList = ({ postId }) => {
   const { data, error, isLoading } = useSWR(`api/comments/post/${postId}`, () =>
@@ -52,9 +53,9 @@ function Comment({ postId, commentData }) {
     commentService.deleteComment,
   );
 
-  const handleDeleteBtn = () => {
-    console.log("delete btn clicked");
-    trigger();
+  const handleDeleteBtn = async () => {
+    await trigger();
+    mutate(`api/comments/post/${postId}`);
   };
 
   return (
