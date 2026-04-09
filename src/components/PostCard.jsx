@@ -14,7 +14,7 @@ const PostCard = ({ postData }) => {
         <span>{postData?.user.username}</span>
         <span>{postDate}</span>
       </div>
-      <div className="flex gap-2">
+      <div className="flex flex-wrap gap-2">
         {postData?.tag.map((tag, index) => (
           <Tag
             key={index}
