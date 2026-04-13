@@ -60,7 +60,7 @@ const Navbar = () => {
               About
             </NavLink>
             <NavLink
-              to="/posts"
+              to="/posts?page=1"
               className={({ isActive }) =>
                 `${isActive ? "text-sky-400" : "text-gray-300"} hover:text-sky-400`
               }

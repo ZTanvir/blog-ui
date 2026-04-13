@@ -1,8 +1,8 @@
 import axiosApi from "./axiosApi";
 
-const getPosts = async () => {
+const getPosts = async (pageNumber) => {
   try {
-    const response = await axiosApi.get("api/posts");
+    const response = await axiosApi.get(`api/posts?page=${pageNumber}`);
     return response.data;
   } catch (error) {
     console.error(error);
@@ -24,13 +24,12 @@ const getLatestPosts = async (limit, order) => {
 
 const getSinglePost = async (postId) => {
   try {
-    const response = await axiosApi.get(`api/posts/${postId}`)
+    const response = await axiosApi.get(`api/posts/${postId}`);
     return response.data;
   } catch (error) {
     console.error(error);
     throw error;
   }
-}
-
+};
 
 export default { getPosts, getLatestPosts, getSinglePost };
